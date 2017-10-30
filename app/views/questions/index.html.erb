@@ -1,0 +1,11 @@
+<div class="container-fluid">
+  <h2>Questions</h2>
+  <table>
+    <% @questions.each do |question| %>
+      <tr>
+        <td><%= question.total_views %></td>
+        <td><%= question.headline %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
