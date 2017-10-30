@@ -7,5 +7,12 @@ class User < ApplicationRecord
   validates :username, :email, :pw_hash, presence: true
   validates :email, :username, uniqueness: true
 
+  def password
+    @password ||= BCrypt::Password.new(self.pw_hash)
+  end
 
+  def password=(new_pw)
+    @password = BCrypt::Password.create(new_pw)
+    self.pw_hash = @password
+  end
 end
